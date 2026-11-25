@@ -2,7 +2,7 @@
 
 [中文说明](README.md)
 
-A Cadence Allegro PCB Editor SKILL script. Select a copper shape or via, then press **`h` or `Shift+H`** to start the corresponding native net assignment command.
+A Cadence Allegro PCB Editor SKILL script. Select one copper shape or one or more vias, then press **`h` or `Shift+H`** to start the corresponding native net assignment command.
 
 ## Installation and usage
 
@@ -13,7 +13,7 @@ A Cadence Allegro PCB Editor SKILL script. Select a copper shape or via, then pr
    skill load("C:/allegro-skill/lf_assign_native.il")
    ```
 
-3. Select one copper shape or via on the canvas and press `h` or `Shift+H`.
+3. On the canvas, select one copper shape, click one via, or box-select multiple vias. Press `h` or `Shift+H`.
 4. In **Options → Assign net name**, select the target net. Right-click and choose **Done** when finished.
 
 To load the script automatically at startup, append this line to your user `pcbenv/allegro.ilinit` and keep the existing contents.
@@ -27,9 +27,9 @@ Save the file and restart Allegro. The script takes over `h` and `Shift+H`. If t
 ## Behavior and limitations
 
 - Copper shapes use `Shape Assign Net`. Vias use `Via Assign Net`. Both use Allegro's native assignment controls.
-- Select one object at a time. If you cannot pick a via or copper shape, check **Vias** or **Shapes** in the **Find** panel.
-- Starting assignment switches to Shape Edit or Etch Edit as appropriate. The script tracks selection events without polling in the background.
-- Both assignment workflows were verified on PCB copies in Allegro PCB Editor 17.4 S039 for Windows. Other versions have yet to be verified.
+- For box selection, enable only **Vias** in the **Find** panel to avoid selecting traces, pins, or other objects. Select one copper shape at a time.
+- Via assignment passes the current via selection to the native command. Shape assignment switches to Shape Edit. The script responds to selection events without background polling.
+- Single-via, multi-via, and single-shape assignment were verified on PCB copies in Allegro PCB Editor 17.4 S039 for Windows. Other versions have yet to be verified.
 
 ## License
 
